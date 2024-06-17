@@ -1,26 +1,54 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
+import { Header } from "./Header";
+import { TaskInput } from "./TaskInput";
+import { TaskItem } from "./TaskItem";
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const [toDoList, setToDoList] = useState([]);
+
+  const addTask = (taskName) => {
+    const newTask = { taskName, checked: false };
+    setToDoList(toDoList.concat(newTask));
+  };
+
+  function deleteTask(deleteTaskName) {
+    setToDoList(toDoList.filter((task) => task.taskName !== deleteTaskName));
+  }
+
+  function toggleCheck(taskName) {
+    setToDoList((prevToDoList) =>
+      prevToDoList.map((task) =>
+        task.taskName === taskName
+          ? {
+              ...task,
+              checked: !task.checked,
+            }
+          : task
+      )
+    );
+  }
+  
+  return (
+    <div className="wrapperContainer">
+      <Header />
+      <TaskInput addTask={addTask} />
+      <div className="listItems">
+        {toDoList.map((task, key) => (
+          <TaskItem
+            task={task}
+            key={key}
+            deleteTask={deleteTask}
+            toggleCheck={toggleCheck}
+          />
+        ))}
+      </div>
+
+      {toDoList.length === 0 ? (
+        <p className="notify">All done for today!</p>
+      ) : null}
+    </div>
+  );
 };
 
 export default Home;
