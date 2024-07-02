@@ -9,11 +9,13 @@ const Home = () => {
 
   const addTask = (taskName) => {
     const newTask = { taskName, checked: false };
-    setToDoList(toDoList.concat(newTask));
+    setToDoList((prevState) => [...prevState, newTask]);
   };
 
   function deleteTask(deleteTaskName) {
-    setToDoList(toDoList.filter((task) => task.taskName !== deleteTaskName));
+    setToDoList((prevState) =>
+      prevState.filter((task) => task.taskName !== deleteTaskName)
+    );
   }
 
   function toggleCheck(taskName) {
@@ -28,7 +30,7 @@ const Home = () => {
       )
     );
   }
-  
+
   return (
     <div className="wrapperContainer">
       <Header />

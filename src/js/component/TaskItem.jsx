@@ -10,7 +10,7 @@ export const TaskItem = ({ task, deleteTask, toggleCheck }) => {
           checked={task.checked}
           onChange={() => toggleCheck(task.taskName)}
         />
-        <p className={task.checked ? "isChecked" : " "}>{task.taskName}</p>
+        <p className={task.checked ? "isChecked" : " "}>{task.label}</p>
         <MdDeleteForever
           className="deleteIcon"
           onClick={() => deleteTask(task.taskName)}

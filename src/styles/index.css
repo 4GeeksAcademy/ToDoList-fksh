@@ -65,13 +65,28 @@ p {
   cursor: pointer;
 }
 
+.isChecked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.cleanBtn {
+  border: 1px solid;
+  cursor: pointer;
+  color: #24292e;
+  border-radius: 2%;
+  background-color: rgb(181, 180, 180);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-left: 3.5px;
+  margin-right: 3.5px;
+  margin-bottom: 3.5px;
+}
+
 .notify {
   font-family: "Courier New", Courier, monospace;
   color: rgb(181, 180, 180);
   text-align: center;
   margin-top: 20px;
-}
-.isChecked {
-  text-decoration: line-through;
-  opacity: 0.5;
 }
