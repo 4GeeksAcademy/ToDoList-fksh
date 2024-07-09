@@ -3,7 +3,7 @@ import { Header } from "./Header";
 import { TaskInput } from "./TaskInput";
 import { TaskItem } from "./TaskItem";
 
-//create your first component
+// Create your first component
 const Home = () => {
   const [toDoList, setToDoList] = useState([]);
 
